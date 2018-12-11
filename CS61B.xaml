@@ -67,21 +67,19 @@
       <AssemblyReference>UiPath.Excel</AssemblyReference>
       <AssemblyReference>UiPath.Mail</AssemblyReference>
       <AssemblyReference>System.ValueTuple</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
   <Sequence DisplayName="CS61B" sap2010:WorkflowViewState.IdRef="Sequence_8">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Default="http://inst.eecs.berkeley.edu/~cs61b/" Name="classURL" />
     </Sequence.Variables>
-    <Assign>
+    <Assign sap2010:WorkflowViewState.IdRef="Assign_3">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[className]</OutArgument>
       </Assign.To>
       <Assign.Value>
         <InArgument x:TypeArguments="x:String">CS61B</InArgument>
       </Assign.Value>
-      <sap2010:WorkflowViewState.IdRef>Assign_3</sap2010:WorkflowViewState.IdRef>
     </Assign>
     <ui:OpenBrowser UiBrowser="{x:Null}" BrowserType="IE" DisplayName="Open Browser" Hidden="False" sap2010:WorkflowViewState.IdRef="OpenBrowser_1" NewSession="True" Private="False" Url="[classURL]">
       <ui:OpenBrowser.Body>
@@ -94,14 +92,14 @@
               <Sequence.Variables>
                 <Variable x:TypeArguments="sd:DataTable" Default="[New System.Data.DataTable]" Name="ExtractDataTable" />
               </Sequence.Variables>
-              <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="IE" DisplayName="Attach Browser 'MainCS61B Page'" sap2010:WorkflowViewState.IdRef="BrowserScope_1" InformativeScreenshot="f44f9459af9a65886458fc8d15a0ce05" Selector="&lt;html title='Main | CS 61B Fall 2018' /&gt;">
+              <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="IE" DisplayName="Attach Browser 'MainCS61B Page'" sap2010:WorkflowViewState.IdRef="BrowserScope_1" InformativeScreenshot="f44f9459af9a65886458fc8d15a0ce05" Selector="&lt;html title='Main | CS 61B *' /&gt;">
                 <ui:BrowserScope.Body>
                   <ActivityAction x:TypeArguments="x:Object">
                     <ActivityAction.Argument>
                       <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
                     </ActivityAction.Argument>
                     <Sequence DisplayName="Do" sap2010:WorkflowViewState.IdRef="Sequence_1">
-                      <ui:ExtractData NextLinkSelector="{x:Null}" ContinueOnError="True" DataTable="[ExtractDataTable]" DelayBetweenPagesMS="300" DisplayName="Extract Structured Data 'TBODY'" ExtractMetadata="&lt;extract&gt;&lt;column attr='href' name='dataURL' exact='1'&gt;&lt;webctrl tag='tr' /&gt;&lt;webctrl tag='td' /&gt;&lt;webctrl tag='a' idx='1' /&gt;&lt;/column&gt;&lt;/extract&gt;" sap2010:WorkflowViewState.IdRef="ExtractData_1" MaxNumberOfResults="100">
+                      <ui:ExtractData NextLinkSelector="{x:Null}" ContinueOnError="True" DataTable="[ExtractDataTable]" DelayBetweenPagesMS="300" DisplayName="Extract Structured Data 'TBODY'" ExtractMetadata="&lt;extract&gt;&lt;column attr='href' name='dataURL' exact='1'&gt;&lt;webctrl tag='tr' /&gt;&lt;webctrl tag='td' /&gt;&lt;webctrl tag='a' /&gt;&lt;/column&gt;&lt;/extract&gt;" sap2010:WorkflowViewState.IdRef="ExtractData_1" MaxNumberOfResults="100">
                         <ui:ExtractData.Target>
                           <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="fe48dad5a0ab709f69235e5c4161b9a5" Selector="&lt;webctrl parentid='calendar' tag='TBODY' /&gt;" WaitForReady="COMPLETE" />
                         </ui:ExtractData.Target>
@@ -252,7 +250,7 @@
         </ActivityAction>
       </ui:ExcelApplicationScope.Body>
     </ui:ExcelApplicationScope>
-    <sads:DebugSymbol.Symbol>d2ZDOlxVc2Vyc1xub3dpc1xPbmVEcml2ZVxEb2N1bWVudHNcVWlQYXRoXFZlcnNhdGlsaXR5UHJvdG90eXBlXFRlc3RQcm9jZXNzXEF1dG9tYXRlUHJvdG90eXBlXENTNjFCLnhhbWxFSQOAAg4CAQFLNEtbAgECTQVVDgIBVFYFdxYCAT54Bf4BIAIBA1IwUjUCAVdPMU88AgFVVrsBVscBAgFSXAt0FgIBP3igAXiuAQIBPX4L+wEWAgEEXQ1zGAIBQIMBDYkBIQIBOIoBDZwBIgIBMZ0BDfoBHQIBBV9CX18CAUFhD3IhAgFCgwE8gwFDAgE7hgEThgFCAgE6gwGaAYMBpAECATmPAT6PAUkCATeSAT6SAUYCATaKAa8BigG2AQIBNIoBK4oBMgIBMp0BPp0BRQIBL6MBE/cBHgIBBmGmAmHWAgIBUWcVbyACAUOpARWtASUCASmuARW1AR4CASO2ARW9AR4CAR++ARW+AbABAgEavwEVzAEaAgEMzQEV2gElAgEI2wEV9gElAgEHaBdsKAIBSW0XbeQBAgFFbhdufgIBRKsBSKsBUgIBLakBsAGpAbcBAgErqQFYqQFhAgEqswFHswFcAgEmsAFIsAFSAgEkuwFAuwFRAgEiuAFBuAFSAgEgvgFFvgFTAgEdvgGIAb4BmwECARu/ASO/ATgCAQ3BARnDASQCARfGARnKASQCAQ/NAYAEzQGGBAIBC80BxQPNAfUDAgEKzQHvAs0B+wICAQlozQNo0gMCAVBqqgFq3QECAU9ojQFokgECAU5oU2hZAgFNaGRoeAIBS2jRAWiJAwIBSm1YbWwCAUdtogFtsAECAUbCARvCAaQBAgEYxwEbxwGsAQIBFcgBG8gBuAECARLJARvJAa4BAgEQwgGIAcIBoQECARnHAYgBxwGpAQIBFsgBogHIAbUBAgETyQGIAckBqwECARE=</sads:DebugSymbol.Symbol>
+    <sads:DebugSymbol.Symbol>d0BDOlxVc2Vyc1xub3dpc1xPbmVEcml2ZVxEZXNrdG9wXFRoZUxhenlBcHBcVGhlTGF6eUFwcFxDUzYxQi54YW1sRUgD/gEOAgEBSjRKWwIBAkwFUw4CAVRUBXUWAgE+dgX8ASACAQNRMFE1AgFXTjFOPAIBVVS7AVTHAQIBUloLchYCAT92oAF2rgECAT18C/kBFgIBBFsNcRgCAUCBAQ2HASECATiIAQ2aASICATGbAQ34AR0CAQVdQl1fAgFBXw9wIQIBQoEBPIEBQwIBO4QBE4QBQgIBOoEBmgGBAaQBAgE5jQE+jQFJAgE3kAE+kAFGAgE2iAGvAYgBtgECATSIASuIATICATKbAT6bAUUCAS+hARP1AR4CAQZfpgJfzgICAVFlFW0gAgFDpwEVqwElAgEprAEVswEeAgEjtAEVuwEeAgEfvAEVvAGwAQIBGr0BFcoBGgIBDMsBFdgBJQIBCNkBFfQBJQIBB2YXaigCAUlrF2vkAQIBRWwXbH4CAUSpAUipAVICAS2nAbABpwG3AQIBK6cBWKcBYQIBKrEBR7EBXAIBJq4BSK4BUgIBJLkBQLkBUQIBIrYBQbYBUgIBILwBRbwBUwIBHbwBiAG8AZsBAgEbvQEjvQE4AgENvwEZwQEkAgEXxAEZyAEkAgEPywGABMsBhgQCAQvLAcUDywH1AwIBCssB7wLLAfsCAgEJZsUDZsoDAgFQaKoBaN0BAgFPZo0BZpIBAgFOZlNmWQIBTWZkZngCAUtm0QFmgQMCAUprWGtsAgFHa6IBa7ABAgFGwAEbwAGkAQIBGMUBG8UBrAECARXGARvGAbgBAgESxwEbxwGuAQIBEMABiAHAAaEBAgEZxQGIAcUBqQECARbGAaIBxgG1AQIBE8cBiAHHAasBAgER</sads:DebugSymbol.Symbol>
   </Sequence>
   <sap2010:WorkflowViewState.ViewStateManager>
     <sap2010:ViewStateManager>
@@ -282,7 +280,7 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="OpenBrowser_1" sap:VirtualizedContainerService.HintSize="784,912.4" />
+      <sap2010:ViewStateData Id="OpenBrowser_1" sap:VirtualizedContainerService.HintSize="784,952.4" />
       <sap2010:ViewStateData Id="ExcelReadRange_1" sap:VirtualizedContainerService.HintSize="748,59.2" />
       <sap2010:ViewStateData Id="FilterDataTable_1" sap:VirtualizedContainerService.HintSize="748,59.2" />
       <sap2010:ViewStateData Id="GetRowItem_1" sap:VirtualizedContainerService.HintSize="696.4,64" />
@@ -344,14 +342,14 @@
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
       <sap2010:ViewStateData Id="ExcelApplicationScope_1" sap:VirtualizedContainerService.HintSize="784,2520.8" />
-      <sap2010:ViewStateData Id="Sequence_8" sap:VirtualizedContainerService.HintSize="806,3696.8">
+      <sap2010:ViewStateData Id="Sequence_8" sap:VirtualizedContainerService.HintSize="806,3736.8">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="CS61B_1" sap:VirtualizedContainerService.HintSize="601.2,2844.4" />
+      <sap2010:ViewStateData Id="CS61B_1" sap:VirtualizedContainerService.HintSize="846,3816.8" />
     </sap2010:ViewStateManager>
   </sap2010:WorkflowViewState.ViewStateManager>
 </Activity>
